@@ -1,0 +1,2 @@
+#!/bin/bash
+find . -type f -iname "*.js" | rev | cut -d/ -f1 | rev | sed "s/\.js$//1"
