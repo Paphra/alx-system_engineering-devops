@@ -1,2 +1,2 @@
 #!/bin/bash
-awk -F'\t' '{hosts[$1]++} END{fo(host in hosts) print host, hosts[host]}' | sort -k2 -rn | head -n11
+cut -f1 | sort | uniq -c | sort -nr | head -n 11
