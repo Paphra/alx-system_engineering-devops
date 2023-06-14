@@ -1,2 +1,2 @@
 #!/bin/bash
-awk '{print $1}' | sort | uniq -c | sort -nr -k1,1 | head -n 11
+echo "$(awk '{print $1}' | sort | uniq -c | sort -nr -k1,1)" | head -n 11
