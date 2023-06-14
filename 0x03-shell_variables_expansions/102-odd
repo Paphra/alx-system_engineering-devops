@@ -1,2 +1,2 @@
 #!/bin/bash
-pr -t -1 2 -s" " | cut -d" " -f2-
+awk 'NR%2==1'
