@@ -1,2 +1,2 @@
 #!/bin/bash
-nl -w1 -s'|' | tail -n +1 | cut -d'|' -f2
+pr -t -l 2 -s" " | cut -d" " -f2-
