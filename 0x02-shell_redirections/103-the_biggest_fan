@@ -1,2 +1,2 @@
 #!/bin/bash
-echo "$(awk '{print $1}' | sort | uniq -c | sort -nr -k1,1)" | head -n 11
+awk -F'\t' '{hosts[$1]++} END{fo(host in hosts) print host, hosts[host]}' | sort -k2 -rn | head -n11
