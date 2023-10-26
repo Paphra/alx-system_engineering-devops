@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# Displays Best School 10 times. Using while loop, Hi at 9th
+i=0
+max=10
+while [ $i -lt $max ]; do
+	echo "Best School"
+	if [ $i == "8" ]; then
+		echo "Hi"
+	fi
+	i=$((i + 1))
+done
