@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# Loops from 1 to 10, bad luck - 4, good luck - 8, else Best School 
+i=1
+max=10
+while [ $i -le $max ]; do
+	if [ $i == "4" ]; then
+		echo "bad luck"
+	elif [ $i == "8" ]; then
+		echo "good luck"
+	else
+		echo "Best School"
+	fi
+	i=$((i + 1))
+done
