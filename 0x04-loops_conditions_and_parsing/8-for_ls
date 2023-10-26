@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# Displays the content of the current dir in list format not including parts before -
+FILES=$(ls)
+for f in $FILES; do
+	echo "$f" | cut -d"-" -f2-
+done
