@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Displays the contents of /etc/passwd only uname, uid, hdir
+while IFS=: read -r uname _ uid _ _ hdir _; do
+	echo "$uname:$uid:$hdir"
+done < /etc/passwd
