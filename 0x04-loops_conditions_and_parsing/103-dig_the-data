@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Displays the vistor IP along with the Status CODE from apache logs
+awk '{print $1, $9}' apache-access.log | \
+	sort | \
+	uniq -c | \
+	sort -rn | \
+	awk '{print $1, $2, $3}'
