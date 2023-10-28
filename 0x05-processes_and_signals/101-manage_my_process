@@ -22,7 +22,7 @@ start_process() {
 }
 
 stop_process() {
-	kill -9 $(cat $file)
+	kill -9 "$(cat $file)"
 	del_file
 }
 
