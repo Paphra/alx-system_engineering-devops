@@ -1,0 +1,49 @@
+#!/usr/bin/env bash
+# Manages the process 'manage_my_process'
+
+usage() {
+	echo "Usage: manage_my_process {start|stop|restart}"
+}
+
+file=/var/run/my_process.pid
+process="manage_my_process"
+
+make_file() {
+	echo $! > $file
+}
+
+del_file() {
+	rm $file
+}
+
+start_process() {
+	./manage_my_process &
+	make_file
+}
+
+stop_process() {
+	kill -9 $(cat $file)
+	del_file
+}
+
+if [ $# -ne 1 ]; then
+	usage
+else
+	case $1 in
+		"start")
+			start_process
+			echo "$process started"
+			;;
+		"stop")
+			stop_process
+			echo "$process stopped"
+			;;
+		"restart")
+			stop_process
+			start_process
+			echo "$process restarted"
+			;;
+		*)
+			usage
+	esac
+fi
