@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# Configures an Ubuntu server with the requirements: localhost -> 127.0.0.2, facebook.com -> 8.8.8.8
+
+local_map="127.0.0.2 localhost"
+fb_map="8.8.8.8 facebook.com"
+
+cp /etc/hosts /etc/hosts.bak
+
+if grep -q "$local_map" /etc/hosts; then
+	sed -i "s/127.0.0.1.*/$local_map/" /etc/hosts
+else
+	echo "$local_map" >> /etc/hosts
+fi
+echo "$fb_map" >> /etc/hosts
