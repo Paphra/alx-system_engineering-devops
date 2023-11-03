@@ -3,6 +3,6 @@
 
 ipv4=$(ifconfig | grep -oP 'inet \K[\d.]+')
 
-for ip in "$ipv4"; do
+for ip in $ipv4; do
 	echo "$ip"
 done
