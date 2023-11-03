@@ -4,10 +4,10 @@
 echo "Active Internet connections (only servers)"
 echo "Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name"
 
-ss -tuln | awk 'NR > 1 {print $1, $2, $3, $5, $6}' | while read proto recvq sendq local foreign state; do
-	pid=$(lsof -i :$local -t)
+ss -tuln | awk 'NR > 1 {print $1, $2, $3, $5, $6}' | while read -r proto recvq sendq local foreign state; do
+	pid=$(lsof -i :"$local" -t)
 	if [ -n "$pid" ]; then
-		program_name=$(ps -p $pid -o comm=)
+		program_name=$(ps -p "$pid" -o comm=)
 		echo "$proto $recvq $sendq $local $foreign $state $pid/$program_name"
 	fi
 done
@@ -16,7 +16,7 @@ echo
 echo "Active UNIX domain sockets (only servers)"
 echo "Proto RefCnt Flags       Type       State         I-Node   PID/Program name    Path"
 
-ss -xln | awk 'NR > 1 {print $1, $2, $4, $5, $6, $7}' | while read proto refcnt type state inode path; do
+ss -xln | awk 'NR > 1 {print $1, $2, $4, $5, $6, $7}' | while read -r proto refcnt type state inode path; do
 	pid_program=$(lsof -U -s | awk -v inode="$inode" '$9 == inode {print $2 "/" $1}')
 	echo "$proto $refcnt $type $state $inode $pid_program $path"
 done 
