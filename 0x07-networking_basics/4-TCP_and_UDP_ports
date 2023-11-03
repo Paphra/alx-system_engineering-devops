@@ -12,7 +12,6 @@ ss -tuln | awk 'NR > 1 {print $1, $2, $3, $5, $6}' | while read -r proto recvq s
 	fi
 done
 
-echo
 echo "Active UNIX domain sockets (only servers)"
 echo "Proto RefCnt Flags       Type       State         I-Node   PID/Program name    Path"
 
