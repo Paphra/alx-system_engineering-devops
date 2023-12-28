@@ -2,6 +2,6 @@
 # Uses ssh to connect to my server using the private key ~/.ssh/school
 server="100.25.119.244"
 username="ubuntu"
-private_key="~/.ssh/school"
+key_file="~/.ssh/school"
 
-ssh -i "$private_key" "$username"@"$server"
+ssh -i "$key_file" "$username"@"$server"
