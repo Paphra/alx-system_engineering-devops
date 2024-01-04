@@ -16,7 +16,7 @@ sh -c 'echo "server {
     }
 
     error_page 404 /404.html;
-    location /404.html {
+    location = /404.html {
         root /usr/share/nginx/html;
         internal;
         return 404 \"Ceci n'\''est pas une page\\n\";
