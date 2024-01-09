@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+# Install and Configure HAproxy on lb-01 server
+
+student_id="431617"
+apt-get update
+apt-get install -y haproxy
+
+tee /etc/haproxy/haproxy.cfg > /dev/null <<EOF
+global
+	log /dev/log local0
+	log /dev/log local1 notice
+	chroot /var/lib/haproxy
+	stats socket /run/haproxy/admin.sock mode 660 level admin
+	stats timeout 30s
+	user haproxy
+	group haproxy
+	daemon
+
+defaults
+	log global
+	mode http
+	option httplog
+	option dontlognull
+	timeout connect 5000
+	timeout client 5000
+	timeout server 5000
+
+frontend app
+	bind *:80
+	default_backend servers
+
+backend servers
+	balance roundrobin
+	server ${student_id}-web-01 100.25.119.244:80 check
+	server ${student_id}-web-02 54.89.107.222:80 check
+EOF
+
+systemctl enable haproxy
+systemctl restart haproxy
