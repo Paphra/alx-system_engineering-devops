@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 # Install and Configure HAproxy on lb-01 server
 
-student_id="431617"
 apt-get update
 apt-get install -y haproxy
 
@@ -31,8 +30,8 @@ frontend app
 
 backend servers
 	balance roundrobin
-	server ${student_id}-web-01 100.25.119.244:80 check
-	server ${student_id}-web-02 54.89.107.222:80 check
+	server web-01 100.25.119.244:80 check
+	server web-02 54.89.107.222:80 check
 EOF
 
 systemctl enable haproxy
