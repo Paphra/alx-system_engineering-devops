@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 # Configure a server with nginx to listen on port 80 IPV4 IPs
-apt-get update
-apt-get install -y nginx
+sudo apt-get update
+sudo apt-get install -y nginx
 
-cp /etc/nginx/nginx.conf /etc/nginx/nginx.conf.bak
+sudo cp /etc/nginx/nginx.conf /etc/nginx/nginx.conf.bak
 
-sed -i '/listen/s/80/80 default_server/g' /etc/nginx/nginx.conf
+sudo sed -i '/listen/s/80/80 default_server/g' /etc/nginx/nginx.conf
 
-echo "<!DOCTYPE html>
+sudo echo "<!DOCTYPE html>
 <html>
 <head>
 <title>Welcome to nginx!</title>
@@ -33,4 +33,4 @@ Commercial support is available at
 </body>
 </html>" > /var/www/html/index.html
 
-service nginx restart
+sudo service nginx restart
