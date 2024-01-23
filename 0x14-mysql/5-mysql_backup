@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+#Abash script that generates a MySQL dump
+PASS="$1"
+STAMP=$(date +%d-%m-%Y)
+FILENAME="backup.sql"
+ARCHIVE="${STAMP}.tar.gz"
+
+mysqldump -u root -p "${PASS}" --all-databases > "${FILENAME}"
+tar -czf "${ARCHIVE}" "${FILENAME}"
