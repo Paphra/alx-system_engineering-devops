@@ -7,3 +7,4 @@ ARCHIVE="${STAMP}.tar.gz"
 
 mysqldump -u root -p "${PASS}" --all-databases > "${FILENAME}"
 tar -czf "${ARCHIVE}" "${FILENAME}"
+echo "${FILENAME}"
