@@ -5,6 +5,6 @@ STAMP=$(date +%d-%m-%Y)
 FILENAME="backup.sql"
 ARCHIVE="${STAMP}.tar.gz"
 
-mysqldump -u root -p "${PASS}" --all-databases > "${FILENAME}"
+mysqldump -u root -p "${PASS}" --all-databases --events > "${FILENAME}"
 tar -czf "${ARCHIVE}" "${FILENAME}"
 echo "${FILENAME}"
