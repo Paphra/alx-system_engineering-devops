@@ -8,6 +8,6 @@ useradd -m -s /bin/bash nginx
 cp /etc/nginx/nginx.conf /etc/nginx/nginx.conf.bak
 
 sed -i 's/^user .*;/user nginx;/' /etc/nginx/nginx.conf
-sed -i 's/\b80\b/8080/g' /etc/nginx/sites-available/default
+sed -i 's/80 default_server;/8080 default_server;/g' /etc/nginx/sites-available/default
 
 service nginx restart
