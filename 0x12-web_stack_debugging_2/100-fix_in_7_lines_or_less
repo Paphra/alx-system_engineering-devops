@@ -1,13 +1,7 @@
 #!/usr/bin/env bash
 # Configures Nginx to run as nginx user
-apt-get update
 apt-get install -y nginx
-
 useradd -m -s /bin/bash nginx
-
-cp /etc/nginx/nginx.conf /etc/nginx/nginx.conf.bak
-
 sed -i 's/^user .*;/user nginx;/' /etc/nginx/nginx.conf
 sed -i 's/\b80\b/8080/g' /etc/nginx/sites-available/default
-
 service nginx restart
