@@ -5,4 +5,4 @@ if [ -z "$1" ]; then
 else
 	user="$1"
 fi
-su - "$user" -c 'whoami'
+sudo -u "$user" 'whoami'
