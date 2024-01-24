@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# run a command as another user
+if [ -z "$1" ]; then
+	user=$(whoami)
+else
+	user="$1"
+fi
+su - "$user" -c 'whoami'
