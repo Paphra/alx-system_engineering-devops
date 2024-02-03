@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# Configure SSL for my domain
+
+display_info() {
+	local domain=$1
+	local subdomain=$2
+	record_type=$(dig +short -t A  "$subdomain.$domain" | awk '{print "A"}')
+	destination=$(dig +short "$subdomain.$domain")
+
+	echo "The subdomain $subdomain is a $record_type record and points to $destination"
+}
+
+domain=$1
+subdomains=("www" "lb-01" "web-01" "web-02")
+
+if [ $# -eq 2 ]; then
+	subdomain=$2
+	display_info "$domain" "$subdomain"
+else
+	for subdomain in "${subdomains[@]}"; do
+		display_info "$domain" "$subdomain"
+	done
+fi
