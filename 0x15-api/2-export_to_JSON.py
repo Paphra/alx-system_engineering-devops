@@ -2,9 +2,9 @@
 """0-gather_data_from_an_API module
 For a rest api that fetched employee data
 """
+import json
 import requests
 import sys
-import json
 
 
 def employee_todo_progress(emp_id):
@@ -12,7 +12,7 @@ def employee_todo_progress(emp_id):
     """
     base_url = "https://jsonplaceholder.typicode.com"
     user_url = "{}/users/{}".format(base_url, emp_id)
-    todos_url = "{}/todos?userId={}".format(base_url, emp_id)
+    todos_url = "{}/todos".format(user_url)
 
     user_response = requests.get(user_url)
     user_data = user_response.json()
