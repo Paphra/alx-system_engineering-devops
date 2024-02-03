@@ -12,21 +12,22 @@ def all_users_tasks():
     """
     base_url = "https://jsonplaceholder.typicode.com"
     users_url = "{}/users".format(base_url)
+    todos_url = "{}/todos".format(base_url)
 
     response = requests.get(users_url)
     users = response.json()
+    response = requests.get(todos_url)
+    todos = response.json()
     data = {}
     for user in users:
         user_tasks = []
-        user_tasks_url = '{}/{}/todos'.format(users_url, user['id'])
-        response = requests.get(user_tasks_url)
-        tasks = response.json()
-        for task in tasks:
-            user_tasks.append({
-                'username': user['name'],
-                'task': task['title'],
-                'completed': task['completed']
-            })
+        for task in todos:
+            if task['userId'] == user['id']:
+                user_tasks.append({
+                    'username': user['name'],
+                    'task': task['title'],
+                    'completed': task['completed']
+                })
         data[str(user['id'])] = user_tasks
 
     file_name = 'todo_all_employees.json'
