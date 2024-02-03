@@ -11,7 +11,7 @@ def employee_todo_progress(emp_id):
     """
     base_url = "https://jsonplaceholder.typicode.com"
     user_url = "{}/users/{}".format(base_url, emp_id)
-    todos_url = "{}/todos?userId={}".format(base_url, emp_id)
+    todos_url = "{}/todos".format(user_url)
 
     user_response = requests.get(user_url)
     user_data = user_response.json()
