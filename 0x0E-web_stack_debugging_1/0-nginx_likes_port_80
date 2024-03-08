@@ -7,7 +7,6 @@ echo "server {
         listen 80;
         server_name _;  # Listen on all active IPv4 IPs
         root /var/www/html;     # Set the web root dir
-        index index.html;
 
         location / {
                 try_files \$uri \$uri/ =404;
